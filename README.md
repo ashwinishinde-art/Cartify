@@ -1,4 +1,4 @@
-<img width="195" height="670" alt="Screenshot 2026-07-16 at 11 08 42 AM" src="https://github.com/user-attachments/assets/2eb27551-f2bf-46b1-b37a-8908a6ec8253" /># Cartify
+
 # Cartify
 
 Cartify is a complete e-commerce platform designed to provide a secure, responsive, and user-friendly online shopping experience. The system accommodates both buyers looking for standard retail purchases and vendors managing their own storefront operations through a tailored merchant portal.
@@ -21,8 +21,7 @@ Cartify is a complete e-commerce platform designed to provide a secure, responsi
 
 ## image 
 
-![Uploading Screenshot 2026-07-16 at 11.08.42 AM.png…]()
-
+<img width="195" height="670" alt="Screenshot 2026-07-16 at 11 08 42 AM" src="https://github.com/user-attachments/assets/2eb27551-f2bf-46b1-b37a-8908a6ec8253" />#
 
 ## 📂 Project Structure
 
