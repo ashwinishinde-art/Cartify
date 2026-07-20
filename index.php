@@ -17,14 +17,14 @@
     <?php if (session_status() === PHP_SESSION_NONE) { session_start(); } ?>
 
 <header class="header">
-    <a href="index.php" class="logo"><img src="../assets/logo.png" height="60px"></a>
+    <a href="index.php" class="logo"><img src="assets/logo.png" height="60px"></a>
     
     <nav class="nav-links">
         <div class="nav-menu-wrapper" style="display: flex; align-items: center; gap: 20px;">
             <div class="standard-links" id="standardLinks">
                 <a href="../index.php">Home</a>
                 <a href="../About/about.html">About</a>
-                <a href="">Contact</a>
+                <a href="../Contact/contact.html">Contact</a>
             </div>
 
             <form action="/Cartify/Products/products.php" method="GET" class="search-container" id="searchForm">
@@ -331,9 +331,9 @@
                 <div class="footer-column">
                     <h2 class="footer-column-title">Quick Links</h2>
                     <ul class="footer-links-list">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="../Contact/contact.html">Contact</a></li>
+                        <li><a href="../About/about.html">About Us</a></li>
                        <!-- Inside your Footer / Navigation Link Stack -->
 <li><?php if (isset($_SESSION['user_id']) && isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'merchant'): ?>
     <!-- If already a logged-in merchant, fast-track them to their dashboard profile -->
