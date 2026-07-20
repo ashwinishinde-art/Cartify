@@ -17,14 +17,14 @@
     <?php if (session_status() === PHP_SESSION_NONE) { session_start(); } ?>
 
 <header class="header">
-    <a href="index.php" class="logo"><img src="assets/logo.png" height="60px"></a>
+    <a href="index.php" class="logo"><img src="../assets/logo.png" height="60px"></a>
     
     <nav class="nav-links">
         <div class="nav-menu-wrapper" style="display: flex; align-items: center; gap: 20px;">
             <div class="standard-links" id="standardLinks">
                 <a href="../index.php">Home</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
+                <a href="../About/about.html">About</a>
+                <a href="">Contact</a>
             </div>
 
             <form action="/Cartify/Products/products.php" method="GET" class="search-container" id="searchForm">
