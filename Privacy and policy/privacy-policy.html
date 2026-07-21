@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Cartify</title>
+
+    <style>
+/* ===================================================
+   Cartify — Policy Pages (Privacy / Terms / Returns)
+   Palette sampled directly from the homepage screenshot:
+   - Olive (sofa / footer)   #5E624A
+   - Near-black (button/ink) #1E1E1E
+   - Body gray               #606060
+   - Card gray (deals box)   #F1F0EE
+   - Testimonial green tint  #E3F1D1
+=================================================== */
+
+:root {
+    --olive: #5E624A;
+    --olive-dark: #4A4D3A;
+    --ink: #1E1E1E;
+    --ink-gray: #606060;
+    --card-gray: #F1F0EE;
+    --tint-green: #E3F1D1;
+    --line: #E8E6E0;
+    --white: #FFFFFF;
+    --radius: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ================= NAVBAR ================= */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 60px;
+    background: var(--white);
+}
+
+.logo a {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: var(--ink);}
+.nav-logo {
+    width: 200px;   /* Increase or decrease as needed */
+    height: auto;
+}
+
+nav {
+    display: flex;
+    gap: 42px;
+}
+
+nav a {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink);
+    transition: color 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--olive);
+}
+
+.icons {
+    display: flex;
+    gap: 22px;
+    font-size: 16px;
+    color: var(--ink);
+}
+
+/* ================= PAGE HERO ================= */
+
+.policy-hero {
+    padding: 60px 60px 44px;
+    text-align: left;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.policy-hero .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--olive);
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.policy-hero h1 {
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 14px;
+    line-height: 1.25;
+}
+
+.policy-hero p {
+    max-width: 560px;
+    color: var(--ink-gray);
+    font-size: 15px;
+}
+
+.policy-hero .updated {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--ink-gray);
+    background: var(--card-gray);
+    padding: 6px 16px;
+    border-radius: 999px;
+}
+
+/* ================= LAYOUT ================= */
+
+.policy-wrap {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 60px;
+    max-width: 1140px;
+    margin: 0 auto 70px;
+    padding: 0 60px;
+    align-items: start;
+}
+
+/* ---- Sidebar TOC ---- */
+
+.policy-toc {
+    position: sticky;
+    top: 30px;
+    background: var(--card-gray);
+    border-radius: 16px;
+    padding: 26px 22px;
+}
+
+.policy-toc h4 {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.policy-toc li {
+    margin-bottom: 2px;
+}
+
+.policy-toc a {
+    display: block;
+    font-size: 14px;
+    color: var(--ink-gray);
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+}
+
+.policy-toc a:hover {
+    background: var(--white);
+    color: var(--ink);
+}
+
+.policy-toc .num {
+    display: inline-block;
+    width: 20px;
+    color: var(--olive);
+    font-weight: 600;
+}
+
+/* ---- Content ---- */
+
+.policy-content section {
+    margin-bottom: 42px;
+    scroll-margin-top: 30px;
+}
+
+.policy-content h2 {
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.policy-content h2 .step {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--olive);
+}
+
+.policy-content p {
+    color: var(--ink-gray);
+    font-size: 15px;
+    margin-bottom: 14px;
+}
+
+.policy-content ul.bullets {
+    margin: 10px 0 18px 4px;
+}
+
+.policy-content ul.bullets li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    color: var(--ink-gray);
+    font-size: 15px;
+}
+
+.policy-content ul.bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--olive);
+}
+
+.policy-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 20px;
+    font-size: 14px;
+    background: var(--card-gray);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.policy-content th,
+.policy-content td {
+    text-align: left;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--white);
+    color: var(--ink-gray);
+}
+
+.policy-content th {
+    font-weight: 600;
+    background: var(--olive);
+    color: var(--white);
+}
+
+.callout {
+    background: var(--tint-green);
+    padding: 16px 20px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    color: #3E4A2E;
+    margin-bottom: 18px;
+}
+
+.contact-card {
+    background: var(--olive);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 34px;
+    margin-top: 10px;
+}
+
+.contact-card h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.contact-card p {
+    color: #E4E5D8;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.contact-card .btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--white);
+    padding: 12px 26px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+}
+
+.contact-card .btn:hover {
+    opacity: 0.85;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: var(--olive);
+    color: #E4E5D8;
+    padding: 60px 60px 30px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-logo p {
+    font-size: 14px;
+    color: #D4D6C4;
+    margin-top: 6px;
+}
+
+.footer-logo .flogo {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+}
+
+footer h3 {
+    font-size: 15px;
+    margin-bottom: 16px;
+    color: var(--white);
+    font-weight: 600;
+}
+
+footer a {
+    display: block;
+    font-size: 14px;
+    color: #D4D6C4;
+    margin-bottom: 10px;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--white);
+}
+
+footer .social-icons {
+    display: flex;
+    gap: 14px;
+}
+
+footer .social-icons i {
+    background: rgba(255,255,255,0.12);
+    padding: 10px;
+    border-radius: 50%;
+    color: var(--white);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+    .policy-wrap {
+        grid-template-columns: 1fr;
+    }
+    .policy-toc {
+        position: static;
+    }
+    header, .policy-hero, .policy-wrap {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    footer {
+        grid-template-columns: 1fr;
+        padding: 40px 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    nav {
+        display: none;
+    }
+    .policy-hero h1 {
+        font-size: 28px;
+    }
+}
+
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+    <div class="logo">
+        <a href="index.php"><img src="Logo.png" alt="Cartify Logo" class="nav-logo"></a>
+    </div>
+
+    <nav>
+        <a href="index.php">Home</a>
+        <a href="../About/about.html">About</a>
+        <a href="../Contact/contact.html">Contact</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fa-regular fa-user"></i>
+        <i class="fa-solid fa-bag-shopping"></i>
+    </div>
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="policy-hero">
+    <span class="eyebrow">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p>How Cartify collects, uses, and protects your information when you shop with us.</p>
+    <span class="updated">Last updated: July 18, 2026</span>
+</section>
+
+<!-- ================= CONTENT ================= -->
+
+<div class="policy-wrap">
+
+    <!-- TOC -->
+    <aside class="policy-toc">
+        <h4>On this page</h4>
+        <ul>
+            <li><a href="#introduction"><span class="num">01</span>Introduction</a></li>
+            <li><a href="#information-we-collect"><span class="num">02</span>Information We Collect</a></li>
+            <li><a href="#how-we-use"><span class="num">03</span>How We Use It</a></li>
+            <li><a href="#cookies"><span class="num">04</span>Cookies</a></li>
+            <li><a href="#sharing"><span class="num">05</span>Sharing Your Data</a></li>
+            <li><a href="#security"><span class="num">06</span>Data Security</a></li>
+            <li><a href="#rights"><span class="num">07</span>Your Rights</a></li>
+            <li><a href="#children"><span class="num">08</span>Children's Privacy</a></li>
+            <li><a href="#changes"><span class="num">09</span>Changes to This Policy</a></li>
+            <li><a href="#contact"><span class="num">10</span>Contact Us</a></li>
+        </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="policy-content">
+
+        <section id="introduction">
+            <h2><span class="step">01</span> Introduction</h2>
+            <p>
+                At Cartify, we respect your privacy and are committed to protecting the
+                personal information you share with us. This policy explains what data
+                we collect, why we collect it, and how you can control it when you use
+                our website and services.
+            </p>
+            <p>
+                By using Cartify, you agree to the practices described in this policy.
+                If you do not agree, please discontinue use of our website.
+            </p>
+        </section>
+
+        <section id="information-we-collect">
+            <h2><span class="step">02</span> Information We Collect</h2>
+            <p>We collect information to provide you with a smoother shopping experience:</p>
+            <ul class="bullets">
+                <li><strong>Account details</strong> — name, email address, phone number, and password.</li>
+                <li><strong>Shipping &amp; billing information</strong> — address and payment details required to fulfil orders.</li>
+                <li><strong>Order history</strong> — items purchased, order value, and delivery status.</li>
+                <li><strong>Device &amp; usage data</strong> — browser type, IP address, and pages visited.</li>
+                <li><strong>Communications</strong> — messages you send to our support team.</li>
+            </ul>
+        </section>
+
+        <section id="how-we-use">
+            <h2><span class="step">03</span> How We Use Your Information</h2>
+            <ul class="bullets">
+                <li>To process and deliver your orders.</li>
+                <li>To send order confirmations, shipping updates, and support responses.</li>
+                <li>To personalise product recommendations and offers.</li>
+                <li>To improve our website, products, and customer service.</li>
+                <li>To detect and prevent fraud or unauthorised activity.</li>
+            </ul>
+        </section>
+
+        <section id="cookies">
+            <h2><span class="step">04</span> Cookies</h2>
+            <p>
+                Cartify uses cookies and similar technologies to keep you signed in,
+                remember items in your cart, and understand how customers use our site.
+                You can disable cookies through your browser settings, though some
+                features may not work as intended.
+            </p>
+        </section>
+
+        <section id="sharing">
+            <h2><span class="step">05</span> Sharing Your Data</h2>
+            <p>We do not sell your personal information. We only share it with:</p>
+            <ul class="bullets">
+                <li>Delivery and logistics partners, to fulfil your orders.</li>
+                <li>Payment processors, to complete secure transactions.</li>
+                <li>Service providers who help us run our website and marketing.</li>
+                <li>Authorities, where required by law.</li>
+            </ul>
+        </section>
+
+        <section id="security">
+            <h2><span class="step">06</span> Data Security</h2>
+            <p>
+                We use industry-standard measures, including encryption and secure
+                servers, to protect your information from unauthorised access, loss,
+                or misuse. While no system is completely infallible, we work
+                continuously to keep your data safe.
+            </p>
+        </section>
+
+        <section id="rights">
+            <h2><span class="step">07</span> Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul class="bullets">
+                <li>Access the personal data we hold about you.</li>
+                <li>Request correction of inaccurate information.</li>
+                <li>Request deletion of your account and associated data.</li>
+                <li>Opt out of marketing communications at any time.</li>
+            </ul>
+            <div class="callout">
+                To exercise any of these rights, reach out to us using the contact
+                details at the bottom of this page.
+            </div>
+        </section>
+
+        <section id="children">
+            <h2><span class="step">08</span> Children's Privacy</h2>
+            <p>
+                Cartify is not intended for individuals under the age of 16. We do not
+                knowingly collect personal information from children.
+            </p>
+        </section>
+
+        <section id="changes">
+            <h2><span class="step">09</span> Changes to This Policy</h2>
+            <p>
+                We may update this Privacy Policy from time to time to reflect changes
+                in our practices. Any updates will be posted on this page with a
+                revised "last updated" date.
+            </p>
+        </section>
+
+        <section id="contact">
+            <h2><span class="step">10</span> Contact Us</h2>
+            <div class="contact-card">
+                <h3>Questions about your privacy?</h3>
+                <p>Our support team is happy to help with any privacy-related concerns.</p>
+                <a href="../Contact/contact.html" class="btn">Contact Support</a>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+    <div class="footer-logo">
+        <img src="logo.png" alt="Cartify Logo" class="footer-logo-img">
+        <p>Shopping made simple.</p>
+    </div>
+
+    <div>
+        <h3>Quick Links</h3>
+        <a href="index.php">Home</a>
+        <a href="../About/about.html">About</a>
+        <a href="../Contact/contact.html">Contact</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-conditions.html">Terms &amp; Conditions</a>
+        <a href="return-policy.html">Return Policy</a>
+    </div>
+
+    <div>
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin"></i>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
