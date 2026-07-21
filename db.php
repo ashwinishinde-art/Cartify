@@ -2,7 +2,7 @@
 // db.php
 $host = '172.20.10.6';
 $dbname = 'cartify_db';
-$username = 'root'; // Default XAMPP/MAMP username
+$username = 'friend'; // Default XAMPP/MAMP username
 $password = 'password123';     // Default XAMPP password (MAMP is usually 'root')
 
 try {

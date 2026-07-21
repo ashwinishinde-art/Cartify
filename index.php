@@ -314,7 +314,7 @@
     </section>
 <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-logo-brand">Cartify</div>
+            <img src="Assets/logo.png" alt="Cartify Logo" width=170px height=50px class="footer-logo">
             
             <div class="footer-columns-wrapper">
                 
@@ -342,9 +342,9 @@
     <!-- If they are a buyer or guest, take them to the onboarding form -->
     <a href="/Cartify/Merchant/">Become a Seller</a>
 <?php endif; ?></li>
-                        <li><a href="#">Privacy policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Return</a></li>
+                        <li><a href="Privacy and policy/privacy-policy.html">Privacy policy</a></li>
+                        <li><a href="Privacy and policy/terms-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="Privacy and policy/return-policy.html">Return</a></li>
                     </ul>
                 </div>
 
