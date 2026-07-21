@@ -1,9 +1,9 @@
 <?php
 // db.php
-$host = 'localhost';
+$host = '172.20.10.6';
 $dbname = 'cartify_db';
 $username = 'root'; // Default XAMPP/MAMP username
-$password = '';     // Default XAMPP password (MAMP is usually 'root')
+$password = 'password123';     // Default XAMPP password (MAMP is usually 'root')
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
