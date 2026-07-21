@@ -82,7 +82,7 @@ $_SESSION['checkout_summary'] = [
 <body>
 
     <header class="header">
-        <img src="/Cartify/logo.png" alt="Cartify Logo" class="logo" height="50">
+        <img src="../assets/logo.png" alt="Cartify Logo" class="logo" height="65">
     </header>
 
     <main class="checkout-container">
