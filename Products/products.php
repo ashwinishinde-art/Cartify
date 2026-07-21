@@ -60,8 +60,8 @@ try {
         <div class="nav-menu-wrapper" style="display: flex; align-items: center; gap: 20px;">
             <div class="standard-links" id="standardLinks">
                 <a href="../index.php">Home</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
+                <a href="About/about.html">About</a>
+                <a href="Contact/contact.html">Contact</a>
             </div>
 
             <form action="/Cartify/Products/products.php" method="GET" class="search-container" id="searchForm">

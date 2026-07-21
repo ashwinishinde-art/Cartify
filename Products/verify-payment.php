@@ -13,12 +13,34 @@ $razorpay_signature = htmlspecialchars($_GET['signature'] ?? '');
 $applied_promo = htmlspecialchars($_GET['promo'] ?? '');
 $summary = $_SESSION['checkout_summary'];
 
-// 1. SAFE TESTING ENVIRONMENT SIGNATURE PASSTHROUGH
+/*
+ * ------------------------------------------------------------------
+ * IMPORTANT — not fixed here, flagging clearly:
+ *
+ * The amount actually charged in Razorpay is calculated in the
+ * browser (checkout.php's `finalPayable`, built from client-side
+ * promo math) and this page never re-checks it against a
+ * server-computed total. `$summary['raw_amount']` below IS
+ * trustworthy (it comes from DB prices in checkout.php), but nothing
+ * here confirms the customer's card was actually charged that much —
+ * only that *a* Razorpay payment ID was passed in the URL. Because
+ * $key_secret is still a placeholder, the signature check below is
+ * skipped whenever no signature is supplied, so this page will
+ * currently record ANY payment_id as a paid order.
+ *
+ * The correct fix is to create the Razorpay Order server-side (via
+ * the Orders API) for the exact server-computed amount *before*
+ * opening the checkout widget, then verify the signature against
+ * that order_id here (failing closed, not conditionally). That
+ * requires a real Razorpay secret key to implement and test, so it's
+ * a follow-up rather than a drop-in patch.
+ * ------------------------------------------------------------------
+ */
 if (!empty($razorpay_signature) && $razorpay_signature !== 'undefined') {
-    $key_secret = "YOUR_RAZORPAY_SECRET_KEY"; // Paste secret here if validating signatures
+    $key_secret = "YOUR_RAZORPAY_SECRET_KEY"; // Replace with your real secret, ideally from an env var
     $generated_signature = hash_hmac('sha256', $payment_id, $key_secret);
 
-    if ($generated_signature !== $razorpay_signature) {
+    if (!hash_equals($generated_signature, $razorpay_signature)) {
         die("Security alert: Payment signature verification failed.");
     }
 }
@@ -35,10 +57,10 @@ $user_id = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : 1;
 try {
     // 2. SAVING ORDER DETAILS
     $stmt = $pdo->prepare("
-        INSERT INTO orders (user_id, product_id, quantity, total_price, payment_id, customer_name, customer_phone, delivery_address, status) 
+        INSERT INTO orders (user_id, product_id, quantity, total_price, payment_id, customer_name, customer_phone, delivery_address, status)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Pending')
     ");
-    
+
     foreach ($summary['items'] as $item) {
         $stmt->execute([
             $user_id,
@@ -52,13 +74,13 @@ try {
         ]);
     }
 } catch (PDOException $e) {
-    // Elegant warning print out with direct troubleshooting tips
+    // FIX: don't print raw SQL exceptions or "how to alter your table" hints
+    // to visitors — that leaks internal schema/config details. Log it for
+    // yourself instead and show the customer a generic message.
+    error_log("verify-payment.php order insert failed: " . $e->getMessage());
     echo "<div style='padding:20px; background:#fce8e6; color:#c5221f; font-family:sans-serif; border-radius:8px; margin:20px;'>";
-    echo "<h3>Database Schema Notice</h3>";
-    echo "<p>Your SQL error means your table doesn't have the new column yet.</p>";
-    echo "<strong>To fix this right now:</strong> Go to phpMyAdmin &rarr; Click your database &rarr; Click the <strong>SQL</strong> tab &rarr; Run this command:<br><br>";
-    echo "<code>ALTER TABLE orders ADD COLUMN customer_phone VARCHAR(20) NOT NULL AFTER customer_name;</code>";
-    echo "<br><br><em>System Debug: " . $e->getMessage() . "</em>";
+    echo "<h3>Something went wrong saving your order</h3>";
+    echo "<p>Your payment may have gone through, but we couldn't record the order automatically. Please contact support with your transaction ID: <strong>" . $payment_id . "</strong></p>";
     echo "</div>";
     exit;
 }
@@ -96,12 +118,12 @@ unset($_SESSION['checkout_shipping']);
         <div class="icon">✓</div>
         <h1>Order Confirmed!</h1>
         <p>Thank you for shopping with us. Your payment was captured securely via Razorpay and your items are being prepared for shipping.</p>
-        
+
         <div class="meta-detail">
             <div class="meta-row"><strong>Transaction ID:</strong> <span><?php echo $payment_id; ?></span></div>
             <div class="meta-row"><strong>Coupon Code Used:</strong> <span><?php echo !empty($applied_promo) ? $applied_promo : 'None'; ?></span></div>
             <div class="meta-row" style="margin-top:8px; border-top:1px solid #ddd; padding-top:8px; font-weight:700;">
-                <strong>Total Authenticated Amount:</strong> 
+                <strong>Total Authenticated Amount:</strong>
                 <span>$<?php echo number_format($summary['raw_amount'], 2); ?></span>
             </div>
         </div>

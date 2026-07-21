@@ -195,8 +195,8 @@
                     <span class="rating-text">5.0/5</span>
                 </div>
                 <div class="product-price-row">
-                    <span class="current-price">$212</span>
-                    <span class="old-price">$232</span>
+                    <span class="current-price">₹3199</span>
+                    <span class="old-price">₹3999</span>
                     <span class="discount-tag">-20%</span>
                 </div>
             </div>
@@ -211,7 +211,7 @@
                     <span class="rating-text">4.0/5</span>
                 </div>
                 <div class="product-price-row">
-                    <span class="current-price">$145</span>
+                    <span class="current-price">₹2599</span>
                 </div>
             </div>
 
@@ -225,7 +225,7 @@
                     <span class="rating-text">3.0/5</span>
                 </div>
                 <div class="product-price-row">
-                    <span class="current-price">$80</span>
+                    <span class="current-price">₹1500</span>
                 </div>
             </div>
 
@@ -239,7 +239,7 @@
                     <span class="rating-text">4.5/5</span>
                 </div>
                 <div class="product-price-row">
-                    <span class="current-price">$210</span>
+                    <span class="current-price">₹2000</span>
                 </div>
             </div>
         </div>

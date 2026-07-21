@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (PDOException $e) {
             $error = "Database connection error: " . $e->getMessage();
         }
-    } else {
+    } else { 
         $error = "Please fill in all required fields.";
     }
 }

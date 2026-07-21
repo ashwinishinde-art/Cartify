@@ -3,6 +3,13 @@
 require_once '../db.php';
 session_start();
 
+// 1. LOGIN GUARD: If the user is not logged in, redirect them to the Login page
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['user']['id'])) {
+    // Redirect guest to login and save cart redirect intent if needed
+    header("Location: /Cartify/Login/index.html?redirect=cart");
+    exit;
+}
+
 // Handle Quantity Updates or Item Removals
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
@@ -44,86 +51,83 @@ if (!empty($_SESSION['cart'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Shopping Cart - Cartify</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../header.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="cart.css?v=<?php echo time(); ?>">
 </head>
 <body>
 
     <!-- SYSTEM NAVBAR -->
-  <header class="header">
-    <a href="../index.php" class="logo">Cartify</a>
-    
-    <nav class="nav-links">
-        <div class="nav-menu-wrapper" style="display: flex; align-items: center; gap: 20px;">
-            <div class="standard-links" id="standardLinks">
-                <a href="../index.php">Home</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-            </div>
-
-            <form action="/Cartify/Products/products.php" method="GET" class="search-container" id="searchForm">
-    <div class="search-input-wrapper" id="searchInputWrapper">
-        <input type="text" name="search" class="search-input" id="searchInput" placeholder="Search brands, products..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>" required>
-    </div>
-</form>
-        </div>
-    </nav>
-
-    <div class="nav-icons" style="display: flex; align-items: center; gap: 15px;">
+    <header class="header">
+        <a href="../index.php" class="logo"><img src="../assets/logo.png" height="60px"></a>
         
-        <button type="button" class="search-btn" id="searchTriggerBtn" aria-label="Toggle Search" style="background: none; border: none; padding: 0; color: inherit; cursor: pointer;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-        </button>
-
-        <?php if (isset($_SESSION['user_name'])): ?>
-            <div class="user-dropdown">
-                <span class="dropdown-trigger">
-                    Hello <?php echo htmlspecialchars(explode(' ', $_SESSION['user_name'])[0]); ?>! ▼
-                </span>
-                <div class="dropdown-content">
-                    <a href="#">Track Order</a>
-                    <a href="<?php echo (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'logout.php' : '../logout.php'; ?>" class="logout-link">Logout</a>
+        <nav class="nav-links">
+            <div class="nav-menu-wrapper" style="display: flex; align-items: center; gap: 20px;">
+                <div class="standard-links" id="standardLinks">
+                    <a href="../index.php">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
                 </div>
+
+                <form action="/Cartify/Products/products.php" method="GET" class="search-container" id="searchForm">
+                    <div class="search-input-wrapper" id="searchInputWrapper">
+                        <input type="text" name="search" class="search-input" id="searchInput" placeholder="Search brands, products..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>" required>
+                    </div>
+                </form>
             </div>
-        <?php else: ?>
-            <a href="Login" aria-label="Login">
+        </nav>
+
+        <div class="nav-icons" style="display: flex; align-items: center; gap: 15px;">
+            
+            <button type="button" class="search-btn" id="searchTriggerBtn" aria-label="Toggle Search" style="background: none; border: none; padding: 0; color: inherit; cursor: pointer;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-            </a>
-        <?php endif; ?>
+            </button>
 
-        <!-- Replace the Cart SVG structure in your header with this -->
-<div style="position: relative; display: flex; align-items: center; cursor: pointer;">
-<a href="Products/cart.php" style="position: relative; display: flex; align-items: center; cursor: pointer; color: inherit; text-decoration: none;">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <path d="M16 10a4 4 0 0 1-8 0"></path>
-    </svg>
-    <!-- Keep your dynamic item counter badge code right here below the SVG -->
-</a>
-    
-    <!-- Dynamic Cart Counter Badge -->
-    <?php 
-    $cart_count = 0;
-    if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-        $cart_count = array_sum($_SESSION['cart']); // Sums up total quantity of all items
-    }
-    if ($cart_count > 0): 
-    ?>
-        <span style="position: absolute; top: -8px; right: -10px; background-color: #c62828; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.75rem; font-weight: 700; font-family: 'Inter', sans-serif;">
-            <?php echo $cart_count; ?>
-        </span>
-    <?php endif; ?>
-</div>
-    </div>
-</header>
+            <?php if (isset($_SESSION['user_name'])): ?>
+                <div class="user-dropdown">
+                    <span class="dropdown-trigger">
+                        Hello <?php echo htmlspecialchars(explode(' ', $_SESSION['user_name'])[0]); ?>! ▼
+                    </span>
+                    <div class="dropdown-content">
+                        <a href="track-orders.php">Track Order</a>
+                        <a href="<?php echo (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'logout.php' : '../logout.php'; ?>" class="logout-link">Logout</a>
+                    </div>
+                </div>
+            <?php else: ?>
+                <a href="../Login" aria-label="Login">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+            <?php endif; ?>
 
+            <div style="position: relative; display: flex; align-items: center; cursor: pointer;">
+                <a href="cart.php" style="position: relative; display: flex; align-items: center; cursor: pointer; color: inherit; text-decoration: none;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </a>
+                
+                <!-- Dynamic Cart Counter Badge -->
+                <?php 
+                $cart_count = 0;
+                if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+                    $cart_count = array_sum($_SESSION['cart']); 
+                }
+                if ($cart_count > 0): 
+                ?>
+                    <span style="position: absolute; top: -8px; right: -10px; background-color: #c62828; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.75rem; font-weight: 700; font-family: 'Inter', sans-serif;">
+                        <?php echo $cart_count; ?>
+                    </span>
+                <?php endif; ?>
+            </div>
+        </div>
+    </header>
 
     <!-- MAIN CART CONTAINER -->
     <main class="cart-container">
@@ -134,7 +138,7 @@ if (!empty($_SESSION['cart'])) {
                 <div style="font-size: 4rem; margin-bottom: 16px;">🛒</div>
                 <h2>Your Cart is empty</h2>
                 <p>Looks like you haven't added anything to your cart yet.</p>
-                <a href="products.php?search=shirt" class="btn-shop-now">Explore Products</a>
+                <a href="products.php" class="btn-shop-now">Explore Products</a>
             </div>
         <?php else: ?>
             <div class="cart-layout">
@@ -179,7 +183,7 @@ if (!empty($_SESSION['cart'])) {
                             </div>
                             
                             <div class="item-price-display">
-                                $<?php echo number_format($item_total, 2); ?>
+                                ₹<?php echo number_format($item_total, 2); ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -190,7 +194,7 @@ if (!empty($_SESSION['cart'])) {
                     <h2>Order Summary</h2>
                     <div class="summary-row">
                         <span>Items (<?php echo array_sum($_SESSION['cart']); ?>):</span>
-                        <span>$<?php echo number_format($subtotal, 2); ?></span>
+                        <span>₹<?php echo number_format($subtotal, 2); ?></span>
                     </div>
                     <div class="summary-row">
                         <span>Shipping:</span>
@@ -199,7 +203,7 @@ if (!empty($_SESSION['cart'])) {
                     <hr>
                     <div class="summary-row total-row">
                         <span>Subtotal:</span>
-                        <span>$<?php echo number_format($subtotal, 2); ?></span>
+                        <span>₹<?php echo number_format($subtotal, 2); ?></span>
                     </div>
                     <a href="checkout.php" class="checkout-btn">Proceed to Checkout</a>
                 </div>
@@ -214,3 +218,4 @@ if (!empty($_SESSION['cart'])) {
     </script>
 </body>
 </html>
+
