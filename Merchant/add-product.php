@@ -106,7 +106,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'merchant') {
 <body>
 
 <header class="header">
-    <a href="../index.php" class="logo">Cartify</a>
+    <img src="../assets/logo.png" height=50px alt="Shop Logo" class="logo">
     <nav class="nav-links">
         <a href="dashboard.php">Dashboard</a>
         <a href="../index.php">View Shop</a>

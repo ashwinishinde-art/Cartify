@@ -147,7 +147,7 @@ try {
 <body>
 
 <header class="header">
-    <a href="../index.php" class="logo">Cartify</a>
+    <img src="../logo.png" alt="Cartify Logo" class="logo" height=50px >
     <nav class="nav-links">
         <a href="dashboard.php">Dashboard</a>
     </nav>

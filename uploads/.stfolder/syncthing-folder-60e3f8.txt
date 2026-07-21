@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: cartify-uploads
+created: 2026-07-21T11:45:55+05:30

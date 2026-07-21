@@ -50,7 +50,7 @@ try {
 <body>
 
 <header class="header">
-    <a href="../index.php" class="logo">Cartify</a>
+    <img src="../assets/logo.png" alt="Cartify Logo" class="logo" height=50px>
     <nav class="nav-links">
         <a href="../index.php">View Shop</a>
     </nav>
