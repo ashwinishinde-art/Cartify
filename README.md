@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="../Assets/logo.png" alt="Cartify Logo" width="300">
+  <img src="../assets/logo.png" alt="Cartify Logo" width="300">
   
   > Everything You Need, All in One Cart....
 </div>
