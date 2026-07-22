@@ -54,7 +54,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
     <header class="header">
-        <a href="/Cartify/index.php" class="logo">Cartify</a>
+        <img src="../assets/logo.png" alt="Cartify Logo" class="logo" height="65">
     </header>
 
     <main class="history-container">
