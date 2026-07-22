@@ -1,36 +1,40 @@
 <div align="center">
-  <img src="../assets/logo.png" alt="Cartify Logo" width="300">
+  <img src="assets/logo.png" alt="Cartify Logo" width="300">
   
-  > Everything You Need, All in One Cart....
+  🛒 E-Commerce Platform
+
+   Everything You Need, All in One Cart.....
 </div>
 
+## 📌 Introduction
 
-## 🚀 Features
+**Cartify** is a modern e-commerce platform designed to make online shopping effortless, secure, and enjoyable[cite: 3, 6]. It connects buyers with thousands of quality products—from fashion and electronics to home essentials—while providing dedicated portals for merchants to manage products and administrators to oversee platform operations.
+
 
 ### 🛍️ User Experience & Frontend
-* **Dynamic Search & Filtering:** Live expandable header search bar with instant query parameter execution[cite: 2, 3, 5].
-* **Product Discovery:** Featured deals of the day, top categories (Fashion, Electronics, Home, etc.), and top-rated popular products[cite: 3].
+* **Dynamic Search & Filtering:** Live expandable header search bar with instant query parameter execution.
+* **Product Discovery:** Featured deals of the day, top categories (Fashion, Electronics, Home, etc.), and top-rated popular products.
 * **Interactive Shopping Cart:** Real-time session-based cart badge with dynamic item count updates[cite: 3].
-* **Infinite Customer Review Carousel:** Custom JavaScript carousel featuring smooth continuous loop mechanics for customer feedback[cite: 5].
-* **Responsive Layout:** Fully optimized for mobile, tablet, and desktop viewports using CSS Flexbox and Grid[cite: 6, 7].
+* **Infinite Customer Review Carousel:** Custom JavaScript carousel featuring smooth continuous loop mechanics for customer feedback.
+* **Responsive Layout:** Fully optimized for mobile, tablet, and desktop viewports using CSS Flexbox and Grid.
 
 ### 🔐 Auth & Account Features
-* **User Authentication:** Secure user registration, login, and session-managed logouts[cite: 3, 4, 6].
-* **Role-Based Access Control (RBAC):** Distinct roles and routing for Customers, Sellers/Merchants, and Administrators[cite: 3, 6].
-* **Merchant Portal:** Quick-access merchant onboarding form and dedicated profile dashboard[cite: 3].
+* **User Authentication:** Secure user registration, login, and session-managed logouts.
+* **Role-Based Access Control (RBAC):** Distinct roles and routing for Customers, Sellers/Merchants, and Administrators
+* **Merchant Portal:** Quick-access merchant onboarding form and dedicated profile dashboard
 
 ### ⚙️ Core Operations
-* **Order Tracking:** Track purchase statuses directly from the dynamic user menu dropdown[cite: 3].
+* **Order Tracking:** Track purchase statuses directly from the dynamic user menu dropdown
 * **PDO Database Connector:** Robust MySQL database connections using PHP Data Objects (PDO) with exception handling and standard error reporting.
 
 ---
 
 ## 🛠️ Technology Stack
 
-* **Frontend:** HTML5, CSS3 (Google Fonts: *Inter*, *Frank Ruhl Libre*, *Fredoka*, *Just Another Hand*, *Monda*), Vanilla JavaScript ES6+[cite: 2, 3, 6, 7]
-* **Backend:** Native PHP (Sessions, PDO)[cite: 1, 3, 4, 6]
+* **Frontend:** HTML5, CSS3 (Google Fonts: *Inter*, *Frank Ruhl Libre*, *Fredoka*, *Just Another Hand*, *Monda*), Vanilla JavaScript 
+* **Backend:** Native PHP (Sessions, PDO)
 * **Database:** MySQL
-* **Local Development Environment:** XAMPP / MAMP / WAMP (Apache Server)[cite: 1, 6]
+* **Local Development Environment:** XAMPP / MAMP / WAMP (Apache Server)
 
 ---
 
