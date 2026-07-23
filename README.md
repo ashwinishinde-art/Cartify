@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Cartify/Assets/logo.png" alt="Cartify Logo" width="400" />
+  <img src="Assets/logo.png" alt="Cartify Logo" width="400" />
 </p>
 
 <h4 align="center">🛒 E-Commerce Platform</h4>
