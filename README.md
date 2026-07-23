@@ -1,10 +1,9 @@
-<div align="center">
-  <img src="assets/logo.png" alt="Cartify Logo" width="300">
-  
-  🛒 E-Commerce Platform
+<p align="center">
+  <img src="Cartify/Assets/logo.png" alt="Cartify Logo" width="400" />
+</p>
 
-   Everything You Need, All in One Cart.....
-</div>
+<h4 align="center">🛒 E-Commerce Platform</h4>
+
 
 ## 📌 Introduction
 
