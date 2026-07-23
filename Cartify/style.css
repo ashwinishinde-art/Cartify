@@ -1,0 +1,930 @@
+/* --- Base Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    font-family: 'Inter', sans-serif; 
+    overflow-x: hidden;
+}
+
+/* --- Header / Navigation --- */
+.header {
+    display: flex;
+    align-items: center; 
+    padding: 30px 8%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: 'Just Another Hand', cursive;
+    font-size: 3.5rem;
+    color: #5D6247;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    margin-left: auto;   /* Pushes the menu links all the way to the right side */
+    margin-right: 40px;  /* Adds a clean gap between the menus and the icons */
+}
+
+.nav-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+
+
+.nav-icons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav-icons svg {
+    cursor: pointer;
+    transition: stroke 0.2s ease;
+}
+
+.nav-icons svg:hover {
+    stroke: #5D6247;
+}
+/* --- Expandable Header Search Styling --- */
+.nav-menu-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.standard-links {
+    display: flex;
+    gap: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.search-input-wrapper {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+    border-bottom: 2px solid transparent;
+    display: flex;
+    align-items: center;
+}
+
+/* Active Class applied via Javascript */
+.search-input-wrapper.active {
+    width: 200px; /* Expands smoothly */
+    border-bottom: 2px solid #5D6247;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    padding: 4px 0;
+    color: #1a1a1a;
+}
+
+/* --- Hero Section --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 8% 100px;
+    max-width: 1440px;
+    margin: 0 auto;
+    min-height: calc(100vh - 120px);
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 650px; 
+    padding-right: 40px;
+}
+
+.hero-text h1 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: #000000;
+}
+
+.hero-text p {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #333333;
+    margin-bottom: 40px;
+}
+
+.btn-explore {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem; 
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #5D6247;
+    padding: 15px 35px; 
+    border-radius: 30px;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.btn-explore:hover {
+    opacity: 0.9;
+}
+
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.hero-visual img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 40px;
+    }
+    
+    .hero-text {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 50px;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav-links {
+        margin: 0 auto; /* Centers the menu elements nicely on mobile viewports */
+    }
+    
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+}
+/* --- Popular Categories Section --- */
+.categories-section {
+    padding: 60px 8% 80px;
+    max-width: 1440px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.categories-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: #000000;
+    margin-bottom: 60px;
+}
+
+.categories-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap; /* Allows items to gracefully wrap on smaller screens */
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 100px; /* Prevents items from squishing too narrow */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+}
+
+.category-img-wrapper {
+    width: 115px;
+    height: 115px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 18px;
+    background-color: #f7f7f7; /* Placeholder background color while image loads */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #000000;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 992px) {
+    .categories-container {
+        justify-content: center;
+        gap: 30px; /* Gives more breathing space when grid breaks into multiple rows */
+    }
+    
+    .categories-title {
+        font-size: 1.85rem;
+        margin-bottom: 40px;
+    }
+}
+
+/* --- Deals of the Day Section --- */
+.deals-section {
+    padding: 40px 8% 80px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.deals-container {
+    background-color: #ededed; 
+    border-radius: 48px;       
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.deals-title {
+    font-family: 'Monda', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 48px;
+    letter-spacing: -0.5px;
+}
+
+/* Rigid Fixed-Height Grid Layout */
+.deals-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; 
+    gap: 32px;
+    height: 560px; /* Locks the absolute height boundary on desktop */
+    align-items: stretch;
+}
+
+.deals-right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 100%;
+}
+
+/* Strict Box Containers */
+.deal-card {
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.tall-card {
+    height: 100%; 
+    border: 1px solid #1a1a1a; 
+}
+
+/* Top Tech Card: Fixed size with matching layout border */
+.tech-card {
+    height: 264px; 
+    border: 1px solid #1a1a1a;
+}
+
+/* Bottom Guitar Card: Fixed size matching the tech card exactly */
+.wide-card {
+    height: 264px; 
+}
+
+/* Image Auto-Fit Engine */
+.deal-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops and fits your image into the locked boxes flawlessly */
+    display: block;
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 992px) {
+    .deals-grid {
+        grid-template-columns: 1fr; 
+        height: auto; /* Drops the rigid constraints smoothly on tablet/mobile viewports */
+    }
+    
+    .tall-card {
+        height: 450px; 
+    }
+    
+    .tech-card,
+    .wide-card {
+        height: 240px; /* Adapts the landscape boxes for medium screens */
+    }
+    
+    .deals-title {
+        font-size: 2.25rem;
+        margin-bottom: 32px;
+    }
+    
+    .deals-container {
+        border-radius: 32px;
+        padding: 40px 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .tall-card {
+        height: 380px;
+    }
+    
+    .tech-card,
+    .wide-card {
+        height: 180px; /* Prevents container blowout on smaller mobile screens */
+    }
+}
+
+/* --- Popular Products Section --- */
+
+.products-section {
+    padding: 60px 8% 100px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.products-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 48px;
+}
+
+/* 4-Column Responsive Layout Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Clear default link styles & underlines on card links */
+a.product-card-link {
+    text-decoration: none !important;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Ensures titles inside links maintain crisp dark color with no underlines */
+.product-card-link .product-title {
+    color: #000000;
+    text-decoration: none !important;
+}
+
+/* Light Gray Rounded Image Box Container */
+.product-img-wrapper {
+    background-color: #f0ece9; /* Matches the warm light-gray background */
+    border-radius: 20px;
+    height: 320px; /* Locked box size constraint */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Smooth hover transition on product image */
+.product-card-link:hover .product-img-wrapper {
+    transform: translateY(-4px);
+}
+
+.product-img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Prevents apparel product visuals from stretching distortion */
+    display: block;
+}
+
+.product-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+/* Star Ratings Row Setup */
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.stars {
+    color: #ffc107; /* Soft gold rating star accent color */
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+}
+
+.rating-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: #767676;
+}
+
+/* Price Engine Configuration */
+.product-price-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.current-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.old-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    text-decoration: line-through !important; /* Retains old-price strikeout without forcing title underlines */
+    color: #b5b5b5;
+}
+
+/* Soft red sale/discount markdown pill badge */
+.discount-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #ff6b6b;
+    background-color: #ffeef0;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+/* ===================================================
+   FORCE RESET FOR PRODUCT CARD LINKS
+   Strips underlines & blue/purple visited link colors 
+=================================================== */
+
+/* Target the wrapper card link and ALL elements inside it */
+.products-section a,
+.product-card-link,
+.product-card-link * {
+    text-decoration: none !important;
+}
+
+/* Ensure title, rating text, and current price stay pure black */
+.product-card-link .product-title,
+.product-card-link .rating-text,
+.product-card-link .current-price,
+.product-card-link .stars {
+    color: #000000 !important;
+}
+
+/* Ensure the strike-through on old price remains intact without adding new underlines */
+.product-card-link .old-price {
+    text-decoration: line-through !important;
+    color: #b5b5b5 !important;
+}
+
+/* Ensure star colors stay yellow */
+.product-card-link .stars {
+    color: #ffc107 !important;
+}
+/* Responsive Tablet & Mobile adjustments */
+@media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 580px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr); /* Collapses down to 2-columns on smaller laptop viewports */
+        gap: 32px;
+    }
+}
+
+@media (max-width: 576px) {
+    .products-grid {
+        grid-template-columns: 1fr; /* Full width items layout structure on phone viewports */
+    }
+    
+    .product-img-wrapper {
+        height: 280px;
+    }
+    
+    .products-title {
+        font-size: 2rem;
+    }
+}
+/* --- Why Shop With Cartify Section --- */
+.why-shop-section {
+    padding: 80px 8% 100px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.why-shop-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 2.75rem;
+    font-weight: 400;
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 60px;
+    letter-spacing: -0.5px;
+}
+
+/* Two-Column Content Flex Layout */
+.why-shop-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px; /* Generous spacing gap between image and text block */
+}
+
+/* Left Column: Image Container */
+.why-shop-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.why-shop-visual img {
+    max-width: 100%;
+    height: auto;
+    max-height: 500px; /* Keeps the bag image cleanly scaled down */
+    object-fit: contain;
+}
+
+/* Right Column: Text Block Layout */
+.why-shop-text {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Clean paragraph spacing gap */
+}
+
+.why-shop-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    text-align: left;
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 992px) {
+    .why-shop-content {
+        flex-direction: column; /* Stacks the graphic and copy layers vertically on smaller displays */
+        gap: 48px;
+    }
+    
+    .why-shop-title {
+        font-size: 2.25rem;
+        margin-bottom: 40px;
+    }
+    
+    .why-shop-text p {
+        text-align: center; /* Centers body copy seamlessly for phone screen viewing layouts */
+        font-size: 1.05rem;
+    }
+    
+    .why-shop-visual img {
+        max-height: 300px; /* Constrains graphic proportions slightly further on small mobile viewports */
+    }
+}
+/* --- Reviews Infinite Carousel Section --- */
+.reviews-section {
+    padding: 60px 4% 80px;
+    max-width: 1280px; /* Constrained slightly to draw components inwards */
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.reviews-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.reviews-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #1a1a1a;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+/* Side Navigation Position Arrangement Container Wrapper */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 65px; /* Creates protected structural side space for alignment arrows */
+    box-sizing: border-box;
+}
+
+.carousel-window {
+    width: 100%;
+    overflow: hidden;
+    padding: 15px 0;
+}
+
+.reviews-track {
+    display: flex;
+    gap: 24px; /* Slightly closer proximity card spacing */
+    width: 100%;
+    will-change: transform;
+}
+
+/* Smaller Visual Footprint Card Customizations */
+.review-card {
+    flex: 0 0 calc(33.333% - 16px); /* Displays 3 smaller layout block dimensions */
+    background-color: #d2f0b0;      
+    border-radius: 28px;            /* Sleeker, slightly tighter edge round profile */
+    padding: 30px 24px;             /* Reduced inner spacing padding bloat */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+    box-sizing: border-box;
+}
+
+.review-card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem; /* Downscaled header sizing */
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 14px;
+}
+
+.review-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem; /* Clean text scale optimization */
+    line-height: 1.55;
+    color: #000000;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.review-author {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+/* Absolute Side Arrow Positioning Rulesets */
+.arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px; /* Sleeker structural circular buttons */
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    background-color: #ffffff; /* Filled white background ensures visibility overlapping grids */
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.prev-btn {
+    left: 5px; /* Floats button elegantly on the absolute left margin boundary */
+}
+
+.next-btn {
+    right: 5px; /* Floats button elegantly on the absolute right margin boundary */
+}
+
+.arrow-btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.arrow-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 1024px) {
+    .review-card {
+        flex: 0 0 calc(50% - 12px); /* Seamlessly drops to two active viewports on small monitors */
+    }
+    .reviews-title { font-size: 2.1rem; }
+}
+
+@media (max-width: 650px) {
+    .carousel-container {
+        padding: 0 50px; /* Tighter navigation constraints across mobile screens */
+    }
+    
+    .review-card {
+        flex: 0 0 100%; /* Displays single card viewport */
+        padding: 24px 20px;
+    }
+    
+    .reviews-title { font-size: 1.75rem; }
+    
+    .arrow-btn {
+        width: 38px;
+        height: 38px;
+    }
+}
+/* --- Google Fonts Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Caveat:wght@400..700&display=swap');
+
+/* --- Brand Footer Section --- */
+.site-footer {
+    background-color: #5D6247; /* The signature dark olive brand green background tone */
+    color: #ffffff;
+    padding: 70px 8% 90px;
+    box-sizing: border-box;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* Script Logo Style Matching Header Design */
+.footer-logo-brand {
+    font-family: 'Just Another Hand', cursive;
+    font-size: 3.5rem;
+    color: #ffffff;
+    text-align: left;
+    font-weight: 400;
+    line-height: 1;
+}
+
+/* 3-Column Content Layout Configuration */
+.footer-columns-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.footer-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Structural Headers styled with Fredoka */
+.footer-column-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 24px 0;
+    letter-spacing: 0.2px;
+}
+
+/* Column 1: Address Metrics */
+.footer-address-line {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    max-width: 300px;
+    margin: 0 0 24px 0;
+}
+
+.footer-phone-block {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.footer-phone-block p {
+    margin: 0;
+}
+
+/* Column 2: Quick Links List Configuration */
+.footer-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links-list a {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 300;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: opacity 0.2s ease;
+}
+
+.footer-links-list a:hover {
+    opacity: 0.8;
+}
+
+/* Column 3: Social Row Adjustments */
+.footer-social-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.social-icon-link:hover {
+    transform: scale(1.08);
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 768px) {
+    .footer-columns-wrapper {
+        flex-direction: column; /* Stacks columns vertically on mobile windows */
+        gap: 40px;
+    }
+    
+    .site-footer {
+        padding: 50px 6% 60px;
+    }
+    
+    .footer-logo-brand {
+        font-size: 3rem;
+    }
+}

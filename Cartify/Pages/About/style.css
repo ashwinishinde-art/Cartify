@@ -1,0 +1,393 @@
+/* ================= GLOBAL RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff;
+    color: #222;
+    overflow-x: hidden;
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+    width: 90%;
+    margin: 60px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.hero-image {
+    flex: 1;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+/* ================= BUTTON ================= */
+.btn {
+    display: inline-block;
+    padding: 14px 35px;
+    background: #55613a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #40482d;
+}
+
+/* ================= STORY SECTION ================= */
+.story {
+    width: 80%;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.story h2 {
+    font-size: 38px;
+    margin-bottom: 25px;
+}
+
+.story p {
+    color: #555;
+    line-height: 1.9;
+    font-size: 17px;
+}
+
+/* ================= MISSION SECTION ================= */
+.mission {
+    width: 90%;
+    margin: 80px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card i {
+    font-size: 40px;
+    color: #55613a;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #555;
+    line-height: 1.7;
+}
+
+/* ================= WHY CHOOSE US ================= */
+.why {
+    width: 90%;
+    margin: 90px auto;
+}
+
+.why h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 38px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.feature {
+    background: #fff;
+    text-align: center;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+    transition: .3s;
+}
+
+.feature:hover {
+    transform: translateY(-8px);
+}
+
+.feature i {
+    font-size: 35px;
+    color: #55613a;
+    margin-bottom: 20px;
+}
+
+.feature h4 {
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #666;
+}
+
+/* ================= STATS SECTION ================= */
+.stats {
+    background: #55613a;
+    color: #fff;
+    padding: 70px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    margin: 90px 0;
+}
+
+.stats h2 {
+    font-size: 40px;
+}
+
+.stats p {
+    margin-top: 10px;
+}
+
+/* ================= TEAM SECTION ================= */
+.team {
+    width: 90%;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.team h2 {
+    font-size: 38px;
+    margin-bottom: 50px;
+}
+
+.members {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.member {
+    width: 220px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+    transition: .3s;
+    text-align: center;
+}
+
+.member:hover {
+    transform: translateY(-10px);
+}
+
+.member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.member h4 {
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.member p {
+    color: #777;
+}
+
+/* ================= CTA SECTION ================= */
+.cta {
+    width: 90%;
+    margin: 90px auto;
+    background: #55613a;
+    color: #fff;
+    text-align: center;
+    padding: 70px;
+    border-radius: 20px;
+}
+
+.cta h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    margin-bottom: 30px;
+}
+
+.cta .btn {
+    background: #fff;
+    color: #55613a;
+}
+
+.cta .btn:hover {
+    background: #f2f2f2;
+}
+
+/* --- Brand Footer Section --- */
+.site-footer {
+    background-color: #5D6247; /* The signature dark olive brand green background tone */
+    color: #ffffff;
+    padding: 70px 8% 90px;
+    box-sizing: border-box;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* Script Logo Style Matching Header Design */
+.footer-logo-brand {
+    font-family: 'Just Another Hand', cursive;
+    font-size: 3.5rem;
+    color: #ffffff;
+    text-align: left;
+    font-weight: 400;
+    line-height: 1;
+}
+
+/* 3-Column Content Layout Configuration */
+.footer-columns-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.footer-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Structural Headers styled with Fredoka */
+.footer-column-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 24px 0;
+    letter-spacing: 0.2px;
+}
+
+/* Column 1: Address Metrics */
+.footer-address-line {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    max-width: 300px;
+    margin: 0 0 24px 0;
+}
+
+.footer-phone-block {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.footer-phone-block p {
+    margin: 0;
+}
+
+/* Column 2: Quick Links List Configuration */
+.footer-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links-list a {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 300;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: opacity 0.2s ease;
+}
+
+.footer-links-list a:hover {
+    opacity: 0.8;
+}
+
+/* Column 3: Social Row Adjustments */
+.footer-social-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.social-icon-link:hover {
+    transform: scale(1.08);
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 768px) {
+    .footer-columns-wrapper {
+        flex-direction: column; /* Stacks columns vertically on mobile windows */
+        gap: 40px;
+    }
+    
+    .site-footer {
+        padding: 50px 6% 60px;
+    }
+    
+    .footer-logo-brand {
+        font-size: 3rem;
+    }
+}
