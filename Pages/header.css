@@ -1,0 +1,218 @@
+/* header.css */
+
+/* Fonts required specifically for the header */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Just+Another+Hand&display=swap');
+
+/* Reset rules for the header elements */
+.header * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header & Navigation Styling */
+.header {
+    display: flex;
+    align-items: center; 
+    padding: 25px 5%;
+    max-width: 1440px;
+    margin: 0 auto;
+    background-color: #ffffff; /* Prevents transparency issues */
+}
+
+/* Logo Fix - StAYS ON LEFT */
+.logo {
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none;
+    flex-shrink: 0; /* Prevents logo from shrinking */
+}
+
+.logo img {
+    height: 57px !important; /* Set proper fixed height */
+    width: auto !important;
+    object-fit: contain;
+    display: block;
+}
+
+/* --- Navigation Links Spacing Fix --- */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    margin-left: auto;   /* Pushes menu links to the right */
+    margin-right: 32px;  /* Adds gap between menus and search/icons */
+}
+
+/* Targets the wrapper housing Home, About, Contact */
+.standard-links, 
+.nav-menu-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    gap: 25px !important; /* Adds breathing room between Home, About, Contact */
+}
+
+.nav-links a,
+.standard-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    white-space: nowrap; /* Prevents text wrapping */
+}
+
+.nav-links a:hover,
+.standard-links a:hover {
+    color: #5D6247;
+}
+
+/* --- Expandable Search Bar CSS --- */
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* The search bar is hidden and collapsed by default */
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+    background-color: #fafdf8;
+    border-radius: 50px;
+    padding: 0;
+}
+
+/* Active class applied via JS to slide the search bar open */
+.search-input-wrapper.active {
+    width: 280px;
+    padding: 6px 16px;
+    border: 2px solid #5D6247;
+    margin-right: 10px;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    color: #1a1a1a;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #5D6247;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.search-btn:hover {
+    background-color: rgba(93, 98, 71, 0.08);
+    transform: scale(1.05);
+}
+
+.search-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-icons svg {
+    cursor: pointer;
+    transition: stroke 0.2s ease;
+}
+
+.nav-icons svg:hover {
+    stroke: #5D6247;
+}
+
+/* --- Restructured User Dropdown Styles --- */
+.user-dropdown {
+    position: relative !important;
+    display: inline-block !important;
+    cursor: pointer;
+}
+
+.dropdown-trigger {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+    text-decoration: none !important;
+}
+
+/* Dropdown Menu Box */
+.dropdown-content {
+    display: none !important; /* Hidden by default */
+    position: absolute !important;
+    right: 0 !important;
+    top: 100% !important;
+    margin-top: 10px !important;
+    background-color: #ffffff !important;
+    min-width: 180px !important;
+    border-radius: 16px !important;
+    padding: 12px 0 !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(85, 98, 70, 0.15) !important;
+    z-index: 99999 !important;
+}
+
+/* Individual links inside the dropdown */
+.dropdown-content a {
+    color: #1a1a1a !important;
+    padding: 10px 20px !important;
+    text-decoration: none !important;
+    display: block !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    text-align: left !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+/* Hover over menu options */
+.dropdown-content a:hover {
+    background-color: #f5f7f3 !important;
+    color: #5D6247 !important;
+}
+
+/* Display the dropdown when hovering over the parent */
+.user-dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+/* Create an invisible bridge to make hovering smooth */
+.user-dropdown::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -15px;
+    height: 15px;
+}

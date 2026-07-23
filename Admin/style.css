@@ -1,0 +1,228 @@
+/* Admin/admin-style.css */
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background-color: #f7f9f6;
+    margin: 0;
+    display: flex;
+    color: #2c322e;
+}
+
+/* Sidebar Framework Layout styling options */
+.sidebar {
+    width: 260px;
+    background-color: #5D6247;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+}
+
+.nav-menu a {
+    display: block;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    transition: all 0.2s;
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+/* Core Workspace Panels Wrapper Layout rules */
+.main-content {
+    margin-left: 260px;
+    flex-grow: 1;
+    padding: 45px 50px;
+    box-sizing: border-box;
+}
+
+.main-content h1 {
+    font-size: 2.1rem;
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Analytics Dashboards Metric Grid block elements */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.metric-card {
+    background: white;
+    border: 1px solid #edf0ec;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+}
+
+.metric-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    color: #666e67;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.metric-card .value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #111;
+}
+
+/* Master Grid Data Table Panels Layout */
+.data-board {
+    background: white;
+    border: 1px solid #edf0ec;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.data-board h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #5D6247;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-table th {
+    background: #f8faf7;
+    padding: 14px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #555;
+    border-bottom: 1px solid #edf0ec;
+}
+
+.admin-table td {
+    padding: 18px;
+    border-bottom: 1px solid #edf0ec;
+    font-size: 0.95rem;
+}
+
+/* Interactive Status Form Selector Option Menus Elements */
+.status-select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-family: inherit;
+    font-size: 0.88rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+.select-Pending { background: #fff3cd; color: #856404; }
+.select-Shipped { background: #cfe2ff; color: #084298; }
+.select-Delivered { background: #d1e7dd; color: #0f5132; }
+.select-Cancelled { background: #f8d7da; color: #842029; }
+.select-Returned { background: #e2e3e5; color: #41464b; }
+
+/* Promotional Coupons Code Split Flex Grid Layout systems */
+.promo-split-container {
+    display: flex;
+    gap: 30px;
+}
+.form-panel { flex: 1; }
+.table-panel { flex: 1.5; }
+
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.9rem; }
+.form-control {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccd2cc;
+    border-radius: 8px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #5D6247;
+    color: white;
+    border: none;
+    font-family: inherit;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.submit-btn:hover { background: #444933; }
+
+.promo-pill-badge {
+    background: #f0f3ee;
+    color: #5D6247;
+    padding: 4px 10px;
+    font-weight: 700;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    border: 1px dashed #5D6247;
+}
+
+.alert-danger {
+    padding: 12px;
+    background: #fce8e6;
+    color: #c5221f;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+/* User and Merchant Tab Management Styling Rules */
+.role-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+.badge-customer {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+.badge-merchant {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid rgba(15, 81, 50, 0.15);
+}
+
+/* Red Delete and Revoke Status Button layouts */
+.delete-btn-action {
+    background: transparent;
+    color: #c62828;
+    border: 1px solid rgba(198, 40, 40, 0.3);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+.delete-btn-action:hover {
+    background: #ffebee;
+    border-color: #c62828;
+}

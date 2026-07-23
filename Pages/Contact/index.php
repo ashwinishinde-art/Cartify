@@ -1,0 +1,364 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Cartify</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../header.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="header">
+    <!-- Logo (Left) -->
+    <a href="<?php echo $base_url; ?>../../index.php" class="logo">
+        <img src="<?php echo $base_url; ?>../../assets/logo.png" alt="Cartify Logo">
+    </a>
+    
+    <!-- Right Navigation Group -->
+    <nav class="nav-links">
+        <!-- Navigation Links -->
+        <div class="standard-links" id="standardLinks">
+            <a href="<?php echo $base_url; ?>../../index.php">Home</a>
+            <a href="<?php echo $base_url; ?>../About">About</a>
+            <a href="<?php echo $base_url; ?>../Contact">Contact</a>
+        </div>
+
+        <!-- Expandable Search Form -->
+        <form action="<?php echo $base_url; ?>Products/products.php" method="GET" class="search-container" id="searchForm">
+            <div class="search-input-wrapper" id="searchInputWrapper">
+                <input type="text" name="search" class="search-input" id="searchInput" placeholder="Search brands, products..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>" required>
+            </div>
+        </form>
+
+        <!-- Right Side Icons -->
+        <div class="nav-icons">
+            <button type="button" class="search-btn" id="searchTriggerBtn" aria-label="Toggle Search">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+
+            <?php if (isset($_SESSION['user_name']) && !empty($_SESSION['user_name'])): ?>
+                <div class="user-dropdown">
+                    <span class="dropdown-trigger">
+                        Hello <?php echo htmlspecialchars(explode(' ', trim($_SESSION['user_name']))[0]); ?>! ▼
+                    </span>
+                    <div class="dropdown-content">
+                        <a href="<?php echo $base_url; ?>../../Products/track-orders.php">Track Order</a>
+                        <a href="<?php echo $base_url; ?>../../logout.php" class="logout-link">Logout</a>
+                    </div>
+                </div>
+            <?php else: ?>
+                <a href="<?php echo $base_url; ?>../../Login" aria-label="Login" class="icon-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+            <?php endif; ?>
+
+            <div class="cart-wrapper">
+                <!-- Dynamic Cart Link based on Login Status -->
+                <?php 
+                $cart_url = (isset($_SESSION['user_name']) && !empty($_SESSION['user_name'])) 
+                    ? $base_url . '../../Products/cart.php' 
+                    : $base_url . '../../Login'; 
+                ?>
+                <a href="<?php echo $cart_url; ?>" class="icon-link" aria-label="Cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </a>
+                
+                <?php 
+                $cart_count = 0;
+                if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+                    $cart_count = array_sum($_SESSION['cart']);
+                }
+                if ($cart_count > 0): 
+                ?>
+                    <span class="cart-badge">
+                        <?php echo $cart_count; ?>
+                    </span>
+                <?php endif; ?>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- ================= HERO ================= -->
+
+<section class="hero contact-hero reveal">
+
+    <div class="hero-text">
+
+        <span class="hero-badge"><i class="fa-solid fa-comment-dots"></i> We reply within 24 hours</span>
+
+        <h1>Let's Talk</h1>
+
+        <p>
+            Questions about an order, a product, or a partnership?
+            Our team is based in Pune and ready to help — reach out
+            below or drop by the details on the right.
+        </p>
+
+        <a href="#contact-form" class="btn">
+            Send a Message
+        </a>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img src="images/contact-hero.png"
+        alt="Customer support illustration">
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT MAIN: FORM + INFO ================= -->
+
+<section class="contact-main" id="contact-form">
+
+    <!-- Form -->
+    <div class="contact-form-card reveal" id="formCard">
+
+        <h2>Send us a message</h2>
+        <p>Fill in the form and we'll get back to you as soon as we can.</p>
+
+        <form class="contact-form" id="contactForm" novalidate>
+
+            <div class="form-row">
+                <div class="field">
+                    <label for="fullName">Full name</label>
+                    <div class="field-input" id="nameWrap">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="fullName" placeholder="Your name" autocomplete="name">
+                    </div>
+                    <div class="hint" id="nameHint"></div>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email</label>
+                    <div class="field-input" id="emailWrap">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+                    </div>
+                    <div class="hint" id="emailHint"></div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="subject">Subject</label>
+                <div class="field-input" id="subjectWrap">
+                    <i class="fa-regular fa-bookmark"></i>
+                    <input type="text" id="subject" placeholder="Order issue, partnership, feedback…">
+                </div>
+                <div class="hint" id="subjectHint"></div>
+            </div>
+
+            <div class="field">
+                <label for="message">Message</label>
+                <div class="field-input field-textarea" id="messageWrap">
+                    <i class="fa-regular fa-message" style="margin-top:3px;"></i>
+                    <textarea id="message" rows="5" placeholder="Tell us a bit more…"></textarea>
+                </div>
+                <div class="hint" id="messageHint"></div>
+            </div>
+
+            <button type="submit" class="form-submit" id="submitBtn">
+                <span class="btn-label" id="btnLabel">Send Message</span>
+                <span class="spinner" id="spinner"></span>
+            </button>
+            <p class="form-note">By sending this, you agree to be contacted about your enquiry.</p>
+
+        </form>
+
+        <div class="form-success" id="formSuccess">
+            <div class="success-ring">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2b593f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h3>Message sent</h3>
+            <p>Thanks for reaching out — a member of the Cartify team will reply to your email shortly.</p>
+        </div>
+
+    </div>
+
+    <!-- Info -->
+    <div class="contact-info-stack">
+
+        <div class="contact-info-card reveal">
+
+            <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="info-text">
+                    <h4>Visit us</h4>
+                    <p>Narhegaon, Pune, Maharashtra 411041</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="info-text">
+                    <h4>Call us</h4>
+                    <p><a href="tel:+918198819841">+91 8198 8198 41</a><br><a href="tel:+919511679983">+91 9511 6799 83</a></p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="info-text">
+                    <h4>Email us</h4>
+                    <p><a href="mailto:support@cartify.com">support@cartify.com</a></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="contact-info-card hours-card reveal">
+            <h4>Support hours</h4>
+            <div class="hours-row"><span>Monday – Friday</span><span>9:00 AM – 8:00 PM</span></div>
+            <div class="hours-row"><span>Saturday</span><span>10:00 AM – 6:00 PM</span></div>
+            <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+        </div>
+
+        <div class="contact-info-card map-card reveal">
+            <iframe
+                src="https://maps.google.com/maps?q=Narhegaon%2C%20Pune%2C%20Maharashtra%20411041&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Cartify office location"></iframe>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FAQ ================= -->
+
+<section class="faq reveal">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+
+        <div class="faq-item">
+            <button class="faq-question">How long does delivery take?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Most orders arrive within 3–5 business days across India, with select metro areas eligible for faster delivery at checkout.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">What is your return policy?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>You can request a return within 7 days of delivery for eligible items. Head to your orders page or contact support to start one.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How can I track my order?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Once your order ships, you'll get a tracking link by email — you can also find it anytime under your account's order history.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Do you offer bulk or business orders?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Yes — reach out through the form above with your requirements and our team will follow up with pricing and timelines.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta reveal">
+
+    <h2>Still Have Questions?</h2>
+
+    <p>
+        Browse our full catalog or start a conversation —
+        we're happy to help either way.
+    </p>
+
+    <a href="../../Products/explore.php" class="btn">
+        Back to Shopping
+    </a>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div>
+
+<h2>Cartify</h2>
+
+<p>Shopping made simple.</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<a href="../../index.php">Home</a>
+
+<a href="../About">About</a>
+
+<a href="index.php">Contact</a>
+
+</div>
+
+<div>
+
+<h3>Follow Us</h3>
+
+<i class="fab fa-facebook"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-linkedin"></i>
+
+</div>
+
+</footer>
+
+<script src="contact.js"></script>
+
+</body>
+</html>

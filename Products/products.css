@@ -1,0 +1,231 @@
+/* Cartify/products.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #FFF;
+    margin: 0;
+    color: #1a1a1a;
+}
+
+.shop-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.shop-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.shop-header h1 {
+    font-size: 2rem;
+    color: #5D6247;
+    margin-bottom: 8px;
+}
+
+.shop-header p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Strict Flex/Grid Layout for Cards */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+/* Card Constraints */
+.product-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(85, 98, 70, 0.05);
+    border: 1px solid rgba(85, 98, 70, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+}
+
+.product-card:hover {
+    
+    box-shadow: 0 10px 30px rgba(85, 98, 70, 0.12);
+}
+
+/* STRICT IMAGE BLOCK CONSTRAINTS */
+.product-image-box {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Fixed physical height to stop stretching */
+    background-color: #f5f7f3;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Centers & crops image beautifully inside bounds */
+    display: block;
+}
+
+/* Badge Layouts */
+.category-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #5D6247;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    z-index: 5;
+}
+
+.sold-out-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+.sold-out-badge {
+    background-color: #c62828;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* Product Content Info */
+.product-info {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-merchant {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.product-description {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 16px 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Pushes content to the bottom */
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #5D6247;
+}
+
+.btn-buy {
+    background-color: #5D6247;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.btn-buy:hover {
+    background-color: #424d36;
+}
+
+.btn-buy.disabled {
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+}
+
+/* Empty State Styling */
+.empty-shop {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+    max-width: 400px;
+    margin: 60px auto;
+}
+
+.empty-shop .large-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.empty-shop h2 {
+    color: #5D6247;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+/* Removes default link blue/purple color, underline, and forces clean styling */
+.product-card a,
+.product-title a,
+.product-title-link {
+    color: #1a1a1a !important;        /* Dark gray / black text */
+    text-decoration: none !important;  /* Removes the underline */
+    transition: color 0.2s ease;
+}
+
+/* Optional: Slight color change when hovered */
+.product-card a:hover,
+.product-title a:hover,
+.product-title-link:hover {
+    color: #556246 !important;        /* Cartify brand olive green on hover */
+    text-decoration: none !important;
+}
+
+/* Ensures visited links don't turn purple */
+.product-card a:visited,
+.product-title a:visited,
+.product-title-link:visited {
+    color: #1a1a1a !important;
+}

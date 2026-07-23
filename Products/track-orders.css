@@ -1,0 +1,201 @@
+/* Products/track-orders.css */
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    background-color: #fafbfa;
+    margin: 0;
+    padding: 0;
+    color: #2d312e;
+}
+
+.history-container {
+    max-width: 1200px;
+    margin: 55px auto;
+    padding: 0 24px;
+}
+
+.history-container h1 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    color: #000000;
+    margin-bottom: 35px;
+}
+
+/* Master Table Container Board Layout */
+.table-card {
+    background: #ffffff;
+    border: 1px solid #eef1ee;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.01);
+}
+
+/* Row Component Width Distribution rules */
+.table-header, .table-row {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 24px;
+    align-items: flex-start;
+}
+
+.table-header {
+    background: #fafbfa;
+    border-bottom: 1px solid #eef1ee;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #555c56;
+}
+
+.table-row-group {
+    border-bottom: 1px solid #eef1ee;
+}
+.table-row-group:last-child {
+    border-bottom: none;
+}
+
+/* Column Dimensions Proportions */
+.col-id { width: 12%; }
+.col-details { width: 23%; }
+.col-price { width: 12%; }
+.col-destination { width: 33%; }
+.col-status { width: 20%; text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
+
+/* Text stylings matching sample visual layouts */
+.order-id-num {
+    font-weight: 700;
+    color: #1a1c1a;
+}
+
+.col-details .item-title {
+    display: block;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #1c1e1c;
+    margin-bottom: 4px;
+}
+.col-details .item-qty {
+    font-size: 0.9rem;
+    color: #626963;
+}
+
+.order-price-bold {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #000000;
+}
+
+.destination-info {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #3a3f3b;
+    display: flex;
+    flex-direction: column; /* Forces everything onto separate lines vertically */
+    align-items: flex-start;
+}
+.dest-name {
+    color: #000000;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.dest-address {
+    color: #555c56;
+    white-space: pre-line; /* Renders format spacing line breaks cleanly */
+    margin-bottom: 4px;
+}
+
+.phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-weight: 600;
+    color: #5D6247;
+}
+.destination-info strong {
+    color: #000000;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Update this block inside Products/track-orders.css */
+.phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-weight: 600;
+    color: #5D6247; /* Swapped to Cartify Theme Green */
+}
+
+/* Badge variants matching layout styling layers */
+.status-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+}
+.badge-paid { background: #eef7ee; color: #2e7d32; }
+.badge-delivered { background: #e3f2fd; color: #1565c0; }
+.badge-cancelled { background: #ffebee; color: #c62828; }
+.badge-returned { background: #f5f5f5; color: #616161; }
+
+/* Dashboard Action Switches */
+.ctrl-btn {
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 0;
+}
+.cancel-action { color: #d32f2f; }
+.cancel-action:hover { text-decoration: underline; }
+
+.review-action { color: #2e7d32; }
+.review-action:hover { text-decoration: underline; }
+
+.review-status-confirmed {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #2e7d32;
+    margin-top: 10px;
+}
+
+/* Feedback Box Drawer Panel */
+.review-drawer {
+    background: #fdfefd;
+    border-top: 1px dashed #e2e5e2;
+    padding: 16px 24px;
+    display: none;
+}
+.review-drawer h4 { margin: 0 0 10px 0; color: #2e7d32; font-size: 0.95rem; }
+.review-input {
+    padding: 8px 12px;
+    border: 1px solid #ccd1cc;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+.submit-review-btn {
+    padding: 8px 18px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 8px;
+}
+/* Status Badge Variations */
+.badge-pending { background: #fff3cd; color: #856404; }
+.badge-shipped { background: #cfe2ff; color: #084298; }
+.badge-delivered { background: #d1e7dd; color: #0f5132; }
+.badge-cancelled { background: #f8d7da; color: #842029; }
+.badge-returned { background: #e2e3e5; color: #41464b; }
